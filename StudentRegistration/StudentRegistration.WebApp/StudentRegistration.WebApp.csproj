@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-StudentRegistration.WebApp-BBFA02E0-FCD9-4472-8947-ED4F27267D04</UserSecretsId>
+    <WebProject_DirectoryAccessLevelKey>0</WebProject_DirectoryAccessLevelKey>
+    <ApplicationInsightsResourceId>/subscriptions/827ee487-8927-4c4b-bd70-18281e4d2fb4/resourcegroups/StudentRegistration/providers/microsoft.insights/components/Ife-StudentRegistration</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/827ee487-8927-4c4b-bd70-18281e4d2fb4/resourcegroups/StudentRegistration/providers/microsoft.insights/components/Ife-StudentRegistration</ApplicationInsightsAnnotationResourceId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Azure.Search" Version="3.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" /> 
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" version="10.0.3" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" version="4.4.0" />
+    <PackageReference Include="System.Spatial" version="5.8.2" />
+    <PackageReference Include="WindowsAzure.Storage" version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\" />
+    <Folder Include="Pages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\Logic\Logic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <Target Name="PostpublishScript" AfterTargets="Publish">
+    <Exec Command="dotnet publish &quot;$(ProjectDir)..\Webjob.Registration&quot; -o &quot;$(PublishDir)\\App_Data\\Jobs\\Continuous\\Webjob.Registration&quot;" />
+  </Target>
+
+</Project>

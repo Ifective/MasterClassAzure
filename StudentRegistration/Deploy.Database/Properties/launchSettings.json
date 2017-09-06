@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Deploy.Database": {
+      "commandName": "Project",
+      "commandLineArgs": "\"Server=(localdb)\\mssqllocaldb;Database=StudentRegistration;Trusted_Connection=True;MultipleActiveResultSets=true\" \"development\""
+    }
+  }
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Logic.Model.Student> 
+<h2>Overview Students</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <a asp-area="" asp-controller="Student" asp-action="Create" class="btn btn-primary">Create Student</a>
+		<a asp-area="" asp-controller="Student" asp-action="Search" class="btn btn-primary">Search Students</a>
+        <a asp-area="" asp-controller="Student" asp-action="Index" class="btn btn-default">Refresh</a>
+        <a asp-area="" asp-controller="Student" asp-action="Error" class="btn btn-danger">Error</a>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+			<th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td><a asp-controller="Student" asp-action="Delete" asp-route-id="@item.StudentId">Delete</a></td>
+            </tr>
+        }
+            
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="3">No students found</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<div>
+    <h3>@ViewBag.Environment</h3>
+</div>

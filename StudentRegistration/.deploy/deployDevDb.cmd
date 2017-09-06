@@ -1,0 +1,2 @@
+cd ..\Deploy.Database\bin\Debug\netcoreapp2.0
+dotnet Deploy.Database.dll "Server=(localdb)\mssqllocaldb;Database=StudentRegistration;Trusted_Connection=True;MultipleActiveResultSets=true" "development"
