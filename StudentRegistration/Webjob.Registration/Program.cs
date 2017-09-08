@@ -35,7 +35,7 @@ namespace Webjob.Registration
             jobHostConfiguration.Tracing.ConsoleLevel = TraceLevel.Verbose; // level to be displayed on all tracers
             jobHostConfiguration.Queues.BatchSize = 1;
             jobHostConfiguration.Queues.MaxDequeueCount = 3;
-            jobHostConfiguration.Queues.MaxPollingInterval = TimeSpan.FromMinutes(1);
+            jobHostConfiguration.Queues.MaxPollingInterval = TimeSpan.FromSeconds(10);
             jobHostConfiguration.JobActivator = new InversionOfControlJobActivator(serviceProvider);
 
             if (jobHostConfiguration.IsDevelopment)
